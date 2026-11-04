@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PeopleEdge | SkillForge AI</title>
+<style>
+:root{--navy:#101b33;--navy2:#182746;--gold:#d9ad54;--ink:#17243b;--muted:#718096;--bg:#f4f6fa;--card:#fff;--line:#e7ebf2;--teal:#1d9b8a;--red:#d66a6a;--blue:#557be7}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Arial;background:var(--bg);color:var(--ink)}
+.app{display:grid;grid-template-columns:245px 1fr;min-height:100vh}.side{background:var(--navy);color:#dce5f4;padding:25px 17px;display:flex;flex-direction:column}.brand{display:flex;gap:11px;align-items:center;padding:0 8px 26px;border-bottom:1px solid #2b3852}.crest{width:39px;height:39px;border-radius:12px;background:linear-gradient(135deg,#e8c777,#b98231);display:grid;place-items:center;color:#17243b;font-weight:900;font-size:19px}.brand b{display:block;color:#fff;font-size:15px;letter-spacing:.4px}.brand small{color:#9eacc2;font-size:10px;letter-spacing:1.4px}.navlabel{font-size:10px;letter-spacing:1.6px;color:#8392aa;margin:25px 10px 9px}.nav button{width:100%;border:0;background:transparent;color:#bdc9da;text-align:left;padding:12px 13px;border-radius:10px;font-size:13px;margin:2px 0;cursor:pointer}.nav button.active,.nav button:hover{background:#263653;color:#fff}.nav button span{display:inline-block;width:25px}.sidefoot{margin-top:auto;background:#1a2945;border:1px solid #34435d;border-radius:13px;padding:14px;font-size:11px;color:#b9c5d6;line-height:1.5}.sidefoot b{color:#f0ce80}
+main{min-width:0}.top{height:70px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 34px}.crumb{font-size:12px;color:var(--muted)}.user{display:flex;align-items:center;gap:10px;font-size:12px}.avatar{width:32px;height:32px;background:#e9efff;color:#4567bd;border-radius:50%;display:grid;place-items:center;font-weight:700}.content{padding:30px 34px 50px;max-width:1500px;margin:auto}.eyebrow{font-size:10px;color:#a27b31;letter-spacing:1.7px;font-weight:800}.heading{display:flex;justify-content:space-between;align-items:flex-start;gap:15px;margin:7px 0 22px}.heading h1{font-size:26px;margin:0 0 6px;color:#14213a}.heading p{margin:0;color:var(--muted);font-size:13px}.btn{border:0;border-radius:9px;padding:10px 15px;font-weight:700;font-size:12px;cursor:pointer;background:var(--navy);color:white}.btn.gold{background:var(--gold);color:#202a3d}.btn.light{background:#eef2f8;color:#35445f}.btn:active{transform:translateY(1px)}.grid{display:grid;gap:15px}.stats{grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:17px}.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:0 3px 12px rgba(23,36,59,.025)}.statlabel{font-size:11px;color:var(--muted);display:flex;justify-content:space-between}.statnum{font-size:27px;font-weight:800;margin:9px 0 4px;letter-spacing:-.8px}.statnote{font-size:10px;color:var(--teal)}.statnote.warn{color:#c17a38}.cols{grid-template-columns:1.45fr 1fr}.card h3{font-size:14px;margin:0 0 4px}.sub{font-size:11px;color:var(--muted);margin:0 0 17px}.barrow{display:grid;grid-template-columns:115px 1fr 38px;gap:10px;align-items:center;margin:14px 0;font-size:11px}.track{height:8px;background:#edf0f5;border-radius:20px;overflow:hidden}.fill{height:100%;border-radius:20px;background:linear-gradient(90deg,#5d7ee8,#39a99a)}.pill{display:inline-flex;padding:5px 8px;border-radius:20px;background:#edf7f5;color:#187e71;font-size:10px;font-weight:700}.pill.gold{background:#fbf4e6;color:#9b7025}.pill.red{background:#fff0ef;color:#b65353}.employee{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding:12px 0;font-size:12px}.employee:last-child{border:0}.empname{font-weight:700}.empmeta{font-size:10px;color:var(--muted);margin-top:3px}.tabs{display:none}.view{display:none}.view.active{display:block}.sectiongrid{grid-template-columns:1fr 1fr}.field{margin:12px 0}.field label{display:block;font-size:11px;font-weight:700;margin-bottom:6px}.field select,.field input{width:100%;padding:10px;border:1px solid #dfe5ee;border-radius:8px;background:#fff;color:#23314a;font-size:12px}.skillrow{display:grid;grid-template-columns:1fr 100px 80px;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--line);font-size:12px}.skillrow input{width:100%}.recommend{background:#f5f7fc;border:1px solid #e6ebf5;padding:14px;border-radius:11px;margin:10px 0}.recommend b{font-size:12px}.recommend p{font-size:11px;color:#68758a;line-height:1.5;margin:6px 0}.module{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:13px 0;border-bottom:1px solid var(--line)}.module:last-child{border:0}.module small{display:block;color:var(--muted);font-size:10px;margin-top:4px}.module strong{font-size:12px}.module button{white-space:nowrap}.notice{padding:12px 14px;background:#fff8e9;border:1px solid #f1dfb7;border-radius:10px;color:#765c2b;font-size:11px;line-height:1.5;margin:14px 0}.toast{position:fixed;right:22px;bottom:22px;background:#14213a;color:#fff;padding:13px 17px;border-radius:10px;font-size:12px;box-shadow:0 8px 30px #0002;display:none;z-index:10}.table{width:100%;border-collapse:collapse;font-size:11px}.table th,.table td{text-align:left;padding:11px 8px;border-bottom:1px solid var(--line)}.table th{color:var(--muted);font-weight:600}.progress{height:7px;background:#edf0f5;border-radius:10px;margin-top:7px}.progress i{display:block;height:7px;border-radius:10px;background:var(--teal)}.footer{color:#9aa4b4;font-size:10px;margin-top:22px}
+@media(max-width:900px){.app{grid-template-columns:1fr}.side{padding:12px;position:sticky;top:0;z-index:4}.brand{padding:0 6px 10px;border:0}.navlabel,.sidefoot{display:none}.nav{display:flex;overflow:auto;gap:4px}.nav button{white-space:nowrap;width:auto;padding:9px 11px;font-size:11px}.nav button span{width:auto;margin-right:5px}.top{height:48px;padding:0 16px}.content{padding:22px 15px}.stats{grid-template-columns:repeat(2,1fr)}.cols,.sectiongrid{grid-template-columns:1fr}.heading{flex-direction:column}.heading h1{font-size:22px}}
+@media(max-width:420px){.stats{gap:9px}.card{padding:14px}.statnum{font-size:23px}.barrow{grid-template-columns:90px 1fr 32px}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="side">
+ <div class="brand"><div class="crest">P</div><div><b>PEOPLEEDGE</b><small>SKILLFORGE AI</small></div></div>
+ <div class="navlabel">PEOPLE TRANSFORMATION</div>
+ <nav class="nav">
+  <button class="active" data-view="overview"><span>▦</span>Overview</button>
+  <button data-view="skills"><span>◈</span>Skill DNA</button>
+  <button data-view="pathways"><span>↗</span>Learning pathways</button>
+  <button data-view="career"><span>◎</span>Career match</button>
+  <button data-view="analytics"><span>▤</span>People insights</button>
+ </nav>
+ <div class="sidefoot"><b>THE 2029 VISION</b><br>AI-enabled · Skills-based<br>Employee-centric · Sustainable</div>
+</aside>
+<main>
+ <header class="top"><div class="crumb">People Transformation Council / <b id="crumb">Overview</b></div><div class="user"><span>Demo workspace</span><div class="avatar">PE</div></div></header>
+ <div class="content">
+  <section class="view active" id="overview">
+   <div class="eyebrow">FRONT II · BUILDING THE CONSULTANT OF TOMORROW</div>
+   <div class="heading"><div><h1>Turn learning into career momentum.</h1><p>Personalised skill intelligence for every PeopleEdge consultant.</p></div><button class="btn gold" onclick="go('skills')">＋ Build my skill profile</button></div>
+   <div class="grid stats">
+    <div class="card"><div class="statlabel">GLOBAL WORKFORCE <span>◉</span></div><div class="statnum">4,500</div><div class="statnote">Across 4 countries</div></div>
+    <div class="card"><div class="statlabel">LEARNING COMPLETION <span>↗</span></div><div class="statnum">48%</div><div class="statnote warn">Below desired capability build</div></div>
+    <div class="card"><div class="statlabel">LEARNING LIBRARY <span>▤</span></div><div class="statnum">1,000+</div><div class="statnote">Resources · no personalised path today</div></div>
+    <div class="card"><div class="statlabel">CRITICAL TALENT ATTRITION <span>△</span></div><div class="statnum">21%</div><div class="statnote warn">Retention risk signal in the case</div></div>
+   </div>
+   <div class="grid cols">
+    <div class="card"><h3>Capability demand vs. current readiness</h3><p class="sub">Illustrative demo data · skill levels are not company-reported facts</p>
+     <div class="barrow"><span>People analytics</span><div class="track"><div class="fill" style="width:46%"></div></div><b>46%</b></div>
+     <div class="barrow"><span>AI & automation</span><div class="track"><div class="fill" style="width:32%"></div></div><b>32%</b></div>
+     <div class="barrow"><span>Change consulting</span><div class="track"><div class="fill" style="width:61%"></div></div><b>61%</b></div>
+     <div class="barrow"><span>Client advisory</span><div class="track"><div class="fill" style="width:72%"></div></div><b>72%</b></div>
+     <div class="notice">The case identifies a skills visibility problem: employees cannot see their skill gaps or which learning leads to future consulting roles.</div>
+    </div>
+    <div class="card"><h3>What SkillForge changes</h3><p class="sub">A simple loop from skill diagnosis to measurable growth</p>
+     <div class="employee"><div><div class="empname">01 · Discover</div><div class="empmeta">Assess skills, role and career ambition</div></div><span class="pill">Skill DNA</span></div>
+     <div class="employee"><div><div class="empname">02 · Recommend</div><div class="empmeta">Prioritise gaps and learning resources</div></div><span class="pill">AI match</span></div>
+     <div class="employee"><div><div class="empname">03 · Apply</div><div class="empmeta">Practice through a live-work challenge</div></div><span class="pill">On-the-job</span></div>
+     <div class="employee"><div><div class="empname">04 · Validate</div><div class="empmeta">Manager confirms demonstrated capability</div></div><span class="pill gold">Human review</span></div>
+    </div>
+   </div>
+   <div class="card" style="margin-top:15px"><h3>Choose a demo consultant</h3><p class="sub">Explore how recommendations change by role and experience.</p><div class="field"><select id="employeeSelect" onchange="changeEmployee()"><option value="ananya">Ananya Rao · Senior Consultant · 4 years</option><option value="rahul">Rahul Mehta · Consultant · 2 years</option><option value="sara">Sara Khan · Manager · 7 years</option></select></div><div id="employeeSummary" class="notice">Ananya's next step: build AI-enabled people analytics capability for a future People Analytics Lead role.</div><button class="btn" onclick="go('pathways')">View personalised pathway →</button></div>
+  </section>
+  <section class="view" id="skills">
+   <div class="eyebrow">01 / DISCOVER</div><div class="heading"><div><h1>Your Skill DNA</h1><p>Map current capability against the skills required for your target role.</p></div><span class="pill">Employee-owned profile</span></div>
+   <div class="grid sectiongrid">
+    <div class="card"><h3>Profile & career direction</h3><p class="sub">Change these inputs to personalise the diagnostic.</p>
+     <div class="field"><label>Consultant</label><select id="profileEmployee" onchange="syncEmployee()"><option value="ananya">Ananya Rao · Senior Consultant</option><option value="rahul">Rahul Mehta · Consultant</option><option value="sara">Sara Khan · Manager</option></select></div>
+     <div class="field"><label>Target role</label><select id="targetRole" onchange="generatePlan()"><option>People Analytics Lead</option><option>AI Transformation Consultant</option><option>HR Strategy Manager</option><option>Talent Development Lead</option></select></div>
+     <div class="field"><label>Learning time available per week</label><select id="hours" onchange="generatePlan()"><option value="2">2 hours</option><option value="4" selected>4 hours</option><option value="6">6 hours</option></select></div>
+     <button class="btn gold" onclick="generatePlan()">✦ Diagnose my skill gaps</button>
+    </div>
+    <div class="card"><h3>Current skill self-assessment</h3><p class="sub">Rate yourself from 1 (beginner) to 5 (advanced).</p><div id="skillInputs"></div><p class="sub">Self-assessment is a starting signal, not a formal competency rating.</p></div>
+   </div>
+   <div class="card" style="margin-top:15px"><h3>AI skill-gap diagnosis</h3><p class="sub">Role benchmark comparison and prioritised development opportunities.</p><div id="diagnosis"><div class="notice">Select “Diagnose my skill gaps” to generate a role-specific development plan.</div></div></div>
+  </section>
+  <section class="view" id="pathways">
+   <div class="eyebrow">02 / RECOMMEND</div><div class="heading"><div><h1>Your learning pathway</h1><p>A focused route through the learning library — not another list of 1,000 courses.</p></div><button class="btn gold" onclick="generatePlan()">✦ Refresh recommendations</button></div>
+   <div class="grid cols"><div class="card"><h3 id="pathTitle">Ananya's 30-day sprint</h3><p class="sub">A sample pathway generated from the selected role and skill gaps.</p><div id="modules"></div></div>
+   <div class="card"><h3>Learning that fits real work</h3><p class="sub">The pathway combines learning formats so capability is applied, not just completed.</p>
+    <div class="employee"><div><b>Micro-learning</b><div class="empmeta">Short concepts for focused learning</div></div><span class="pill">15–20 min</span></div>
+    <div class="employee"><div><b>Guided practice</b><div class="empmeta">Use a skill on a realistic business problem</div></div><span class="pill">60 min</span></div>
+    <div class="employee"><div><b>Peer learning</b><div class="empmeta">Share feedback and learn from a colleague</div></div><span class="pill">30 min</span></div>
+    <div class="employee"><div><b>Manager validation</b><div class="empmeta">Confirm evidence of skill application</div></div><span class="pill gold">Human-led</span></div>
+    <div class="notice">Sustainability guardrail: recommendations respect the employee's stated weekly learning capacity. No after-hours learning targets are assumed.</div>
+   </div></div>
+  </section>
+  <section class="view" id="career">
+   <div class="eyebrow">03 / CONNECT LEARNING TO OPPORTUNITY</div><div class="heading"><div><h1>Career match</h1><p>Make the link between skills, learning and internal career possibilities visible.</p></div></div>
+   <div class="grid sectiongrid">
+    <div class="card"><h3>Suggested next roles</h3><p class="sub">Illustrative role-fit scores based on the demo skill profile.</p><div id="roleMatches"></div></div>
+    <div class="card"><h3>Career conversation starter</h3><p class="sub">Use this to make development discussions more specific.</p><div class="recommend"><b>Ask your manager</b><p id="managerPrompt">Which upcoming project could let me apply people analytics and receive feedback on my progress?</p></div><div class="recommend"><b>Evidence to collect</b><p>Work sample · project outcome · peer feedback · manager validation. Course completion alone does not prove role readiness.</p></div><button class="btn light" onclick="toast('Career conversation prompt copied into your demo workspace.')">Save conversation prompt</button></div>
+   </div>
+  </section>
+  <section class="view" id="analytics">
+   <div class="eyebrow">04 / ORGANISATIONAL INSIGHTS</div><div class="heading"><div><h1>People insights</h1><p>Give HR a view of capability-building progress and where support is needed.</p></div><button class="btn light" onclick="downloadCSV()">↓ Export demo data</button></div>
+   <div class="grid stats">
+    <div class="card"><div class="statlabel">PATHWAYS STARTED</div><div class="statnum" id="started">126</div><div class="statnote">Illustrative prototype metric</div></div>
+    <div class="card"><div class="statlabel">PATHWAYS COMPLETED</div><div class="statnum" id="completed">61</div><div class="statnote">Illustrative prototype metric</div></div>
+    <div class="card"><div class="statlabel">SKILL VALIDATIONS</div><div class="statnum" id="validations">38</div><div class="statnote">Manager-confirmed evidence</div></div>
+    <div class="card"><div class="statlabel">AT-RISK SKILL AREAS</div><div class="statnum">3</div><div class="statnote warn">Prioritise targeted support</div></div>
+   </div>
+   <div class="grid cols"><div class="card"><h3>Capability gap heatmap</h3><p class="sub">Illustrative aggregate readiness by practice.</p><table class="table"><thead><tr><th>Skill cluster</th><th>Readiness</th><th>Priority</th></tr></thead><tbody><tr><td>AI & automation</td><td>32% <div class="progress"><i style="width:32%"></i></div></td><td><span class="pill red">High</span></td></tr><tr><td>People analytics</td><td>46% <div class="progress"><i style="width:46%"></i></div></td><td><span class="pill gold">High</span></td></tr><tr><td>Change consulting</td><td>61% <div class="progress"><i style="width:61%"></i></div></td><td><span class="pill gold">Medium</span></td></tr><tr><td>Client advisory</td><td>72% <div class="progress"><i style="width:72%"></i></div></td><td><span class="pill">Monitor</span></td></tr></tbody></table></div>
+    <div class="card"><h3>What HR should do next</h3><p class="sub">Turn learning signals into decisions.</p><div class="employee"><div><b>1. Prioritise AI capability</b><div class="empmeta">Create role-based learning sprints</div></div></div><div class="employee"><div><b>2. Link skills to staffing</b><div class="empmeta">Use verified skills in project matching</div></div></div><div class="employee"><div><b>3. Review access and fairness</b><div class="empmeta">Check uptake across tenure, location and practice</div></div></div><div class="employee"><div><b>4. Listen to employees</b><div class="empmeta">Ask whether learning is useful and workload-safe</div></div></div></div>
+   </div>
+   <div class="notice"><b>Measurement guardrail:</b> Do not optimise only for course completion. Track skill demonstration, internal mobility, employee confidence and equitable access. Learning data must support development — not become an automated promotion or termination decision.</div>
+  </section>
+  <div class="footer">SKILLFORGE AI · FRONT II: LEARNING & DEVELOPMENT · Prototype with illustrative demo data · AI recommendations require human review.</div>
+ </div>
+</main></div><div class="toast" id="toast"></div>
+<script>
+const people={
+ ananya:{name:'Ananya Rao',role:'Senior Consultant',years:4,target:'People Analytics Lead',skills:{'People analytics':2,'AI & automation':1,'Change consulting':3,'Client advisory':4,'Data storytelling':2}},
+ rahul:{name:'Rahul Mehta',role:'Consultant',years:2,target:'AI Transformation Consultant',skills:{'People analytics':2,'AI & automation':2,'Change consulting':2,'Client advisory':3,'Data storytelling':2}},
+ sara:{name:'Sara Khan',role:'Manager',years:7,target:'HR Strategy Manager',skills:{'People analytics':3,'AI & automation':2,'Change consulting':4,'Client advisory':5,'Data storytelling':3}}
+};
+const benchmarks={
+ 'People Analytics Lead':{'People analytics':5,'AI & automation':3,'Change consulting':3,'Client advisory':3,'Data storytelling':5},
+ 'AI Transformation Consultant':{'People analytics':3,'AI & automation':5,'Change consulting':4,'Client advisory':4,'Data storytelling':3},
+ 'HR Strategy Manager':{'People analytics':3,'AI & automation':3,'Change consulting':5,'Client advisory':5,'Data storytelling':4},
+ 'Talent Development Lead':{'People analytics':3,'AI & automation':2,'Change consulting':4,'Client advisory':4,'Data storytelling':3}
+};
+const resources={
+ 'People analytics':[{n:'People Analytics Foundations',t:'Micro-course',d:'Understand workforce metrics and analytical questions.',h:1},{n:'Build a Workforce Insights Story',t:'Applied project',d:'Turn a small people dataset into a decision-ready narrative.',h:2}],
+ 'AI & automation':[{n:'Generative AI for HR Consulting',t:'Micro-course',d:'Identify safe, high-value AI use cases in people advisory.',h:1},{n:'Design an AI-enabled HR workflow',t:'Guided practice',d:'Map a workflow, risks, human checks and success measures.',h:2}],
+ 'Change consulting':[{n:'Change Management in Practice',t:'Micro-course',d:'Diagnose stakeholder impact and adoption barriers.',h:1},{n:'Stakeholder Change Simulation',t:'Simulation',d:'Practise a change plan for a client transformation.',h:2}],
+ 'Client advisory':[{n:'Consulting Problem Structuring',t:'Workshop',d:'Frame ambiguous client problems and recommendations.',h:2}],
+ 'Data storytelling':[{n:'Data Storytelling for Decision Makers',t:'Micro-course',d:'Translate analysis into a clear executive narrative.',h:1},{n:'Present an Insight to a Client',t:'Applied project',d:'Create and present a concise evidence-based recommendation.',h:2}]
+};
+let current='ananya',done=new Set(),validated=38;
+function toast(msg){let t=document.getElementById('toast');t.textContent=msg;t.style.display='block';setTimeout(()=>t.style.display='none',2400)}
+function go(v){document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));document.getElementById(v).classList.add('active');document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===v));document.getElementById('crumb').textContent=({overview:'Overview',skills:'Skill DNA',pathways:'Learning pathways',career:'Career match',analytics:'People insights'})[v];if(v==='career')renderMatches()}
+document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>go(b.dataset.view)));
+function changeEmployee(){current=document.getElementById('employeeSelect').value;document.getElementById('profileEmployee').value=current;updateSummary();renderSkills();generatePlan()}
+function syncEmployee(){current=document.getElementById('profileEmployee').value;document.getElementById('employeeSelect').value=current;updateSummary();renderSkills();generatePlan()}
+function updateSummary(){let p=people[current];document.getElementById('employeeSummary').textContent=p.name+' is a '+p.role+' with '+p.years+' years of experience. Suggested focus: '+p.target+'.';}
+function renderSkills(){let p=people[current];document.getElementById('skillInputs').innerHTML=Object.entries(p.skills).map(([s,n])=>`<div class="skillrow"><span>${s}</span><input aria-label="${s} skill level" type="range" min="1" max="5" value="${n}" oninput="setSkill('${s}',this.value)"><b id="val-${slug(s)}">${n}/5</b></div>`).join('')}
+function slug(s){return s.toLowerCase().replaceAll(' ','-').replaceAll('&','and')}
+function setSkill(s,v){people[current].skills[s]=Number(v);document.getElementById('val-'+slug(s)).textContent=v+'/5'}
+function generatePlan(){
+ let p=people[current],role=document.getElementById('targetRole').value,hours=Number(document.getElementById('hours').value),bench=benchmarks[role];
+ let gaps=Object.entries(bench).map(([s,target])=>({s,target,now:p.skills[s]||1,gap:target-(p.skills[s]||1)})).filter(x=>x.gap>0).sort((a,b)=>b.gap-a.gap);
+ let priority=gaps.slice(0,3);
+ document.getElementById('diagnosis').innerHTML=priority.length?priority.map(x=>`<div class="recommend"><b>${x.s} <span class="pill ${x.gap>=3?'red':'gold'}">Priority ${x.gap>=3?'1':'2'}</span></b><p>Current self-rating: ${x.now}/5 · Target role benchmark: ${x.target}/5 · Gap: ${x.gap} level(s). Recommended action: build capability through a short learning module and a work-based application.</p></div>`).join(''):'<div class="notice">No major gaps identified in this demo profile. Validate skills with a manager and seek stretch assignments.</div>';
+ document.getElementById('pathTitle').textContent=p.name+"'s 30-day sprint · "+role;
+ let list=[];priority.forEach(x=>(resources[x.s]||[]).forEach(r=>list.push({...r,skill:x.s})));
+ list=list.slice(0,4);if(!list.length)list=[{n:'Advanced consulting challenge',t:'Applied project',d:'Demonstrate capability in a live business context.',h:2,skill:'Career growth'}];
+ document.getElementById('modules').innerHTML=list.map((r,i)=>{let id=p.name+'-'+r.n;let isDone=done.has(id);return `<div class="module"><div><strong>${r.n}</strong><small>${r.t} · ${r.h}h · ${r.skill}<br>${r.d}</small></div><button class="btn ${isDone?'light':''}" onclick="completeModule('${encodeURIComponent(id)}')">${isDone?'✓ Done':'Mark complete'}</button></div>`}).join('');
+ document.getElementById('managerPrompt').textContent='Which upcoming project could let me practise '+(priority[0]?.s||'my strongest skills')+' and receive feedback against the '+role+' expectations?';
+ renderMatches();
+}
+function completeModule(encoded){let id=decodeURIComponent(encoded);if(done.has(id)){toast('This module is already marked complete.');return}done.add(id);document.getElementById('completed').textContent=Number(document.getElementById('completed').textContent)+1;toast('Learning progress updated. Remember: completion is not the same as skill validation.');generatePlan()}
+function renderMatches(){let role=document.getElementById('targetRole').value,bench=benchmarks[role],skills=people[current].skills;let score=Math.round(Object.entries(bench).reduce((a,[s,v])=>a+Math.min(1,(skills[s]||1)/v),0)/Object.keys(bench).length*100);let options=[{n:role,fit:score},{n:'Talent Development Lead',fit:Math.max(25,score-8)},{n:'HR Strategy Manager',fit:Math.max(20,score-17)}];document.getElementById('roleMatches').innerHTML=options.map((o,i)=>`<div class="employee"><div style="flex:1"><b>${o.n}</b><div class="progress"><i style="width:${o.fit}%"></i></div></div><strong>${o.fit}%</strong></div>`).join('')+'<p class="sub">Fit score is a prototype estimate from self-rated skills, not a hiring or promotion decision.</p>'}
+function downloadCSV(){let rows=[['Metric','Value'],['Workforce','4500'],['Learning completion','48%'],['Critical talent attrition','21%'],['Learning resources','1000+'],['Demo pathways started',document.getElementById('started').textContent],['Demo pathways completed',document.getElementById('completed').textContent]];let csv=rows.map(r=>r.join(',')).join('\n');let a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));a.download='peopleedge-demo-insights.csv';a.click();URL.revokeObjectURL(a.href);toast('Demo insights exported as CSV.')}
+document.getElementById('targetRole').value='People Analytics Lead';renderSkills();updateSummary();generatePlan();
+</script>
+</body></html>
